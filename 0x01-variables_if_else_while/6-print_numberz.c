@@ -13,8 +13,8 @@ int main(void)
 	for (num = 0; num < 10; num++)
 		putchar(num + '0'); 
 /**
-another solution putchar(num + 48);
-*/
+ * another solution putchar(num + 48);
+ */
 
 	putchar('\n');
 
