@@ -2,19 +2,13 @@
 
 
 /**
- * check - checks for the square root
- * @a:int
- * @b:int
+ * _sqrt - checks for the square root
+ * @i:int
+ * @n:int
  *
  * Return: int
  */
 
-
-/**
- * _sqrt_recursion - returns the natural square root of a number
- * @n: integer to find sqrt of
- * Return: natural square root 
- */
 
 
 int _sqrt(int i, int n)
@@ -25,6 +19,12 @@ int _sqrt(int i, int n)
 		return (-1);
 	return (_sqrt(i + 1, n));
 }
+
+/**
+  * _sqrt_recursion - returns the natural square root of a number
+  * @n: integer to find sqrt of
+  * Return: natural square root
+  */
 
 int _sqrt_recursion(int n)
 {
