@@ -7,6 +7,7 @@
  * Return:int
  */
 
+int prime(int a, int b)
 {
 	if (n < 2 || n % i == 0)
 		return (0);
