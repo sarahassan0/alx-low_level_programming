@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
-#include "main.c"
+#include "main.h"
 
 /**
  * _calloc - Allocates memory for an array of elements and sets it to zero
@@ -14,7 +14,7 @@
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	unsigned int i;
-	void *ptr;
+	char *ptr;
 
 	if (nmemb == 0 || size == 0)
 	{
