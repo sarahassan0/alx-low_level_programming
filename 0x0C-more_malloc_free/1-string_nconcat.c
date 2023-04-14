@@ -3,7 +3,6 @@
  * @s1: The first string to be concatenated
  * @s2: The second string to be concatenated
  * @n: The maximum number of bytes to be concatenated from s2
- *
  * Return: The concatenated string, or NULL on failure
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
