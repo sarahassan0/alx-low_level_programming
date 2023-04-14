@@ -7,8 +7,8 @@
  * @nmemb: The number of elements to allocate
  * @size: The size of each element
  *
- * Return: If allocation is successful, returns a pointer to the allocated memory,
- *         otherwise, returns NULL
+ * Return: If allocation is successful,
+ *         returns a pointer to the allocated memory, otherwise, returns NULL
  */
 
 void *_calloc(unsigned int nmemb, unsigned int size)
@@ -20,9 +20,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	{
 		return (NULL);
 	}
-
 	ptr = malloc(nmemb * size);
-
 	if (ptr == NULL)
 	{
 		return (NULL);
