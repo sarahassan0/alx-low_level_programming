@@ -1,17 +1,21 @@
-section .data
-    hello db "Hello, Holberton", 0x0A, 0x00 ; The string to be printed followed by a newline and null character
-    
-section .text
-    global _start
+	extern	printf		; the C function, to be called
 
-_start:
-    ; Set up the arguments for the printf function
-    mov rdi, hello ; Set the first argument (format string) to the address of hello
-    xor eax, eax ; Clear the EAX register to indicate printf should return 0
-    call printf ; Call the printf function
-    
-    ; Exit the program with a status of 0
-    xor edi, edi ; Set the exit status to 0
-    mov eax, 60 ; System call number for exit
-    syscall ; Call the system call
+	        section .data		; Data section, initialized variables
+msg:		db "Hello, Holberton", 0 ; C string needs 0
+fmt:	    	db "%s", 10, 0          ; The printf format, "\n",'0'
 
+	        section .text		; Code section.
+
+	        global main		; the standard gcc entry point
+main:					; the program label for the entry point
+	        push    rbp		; set up stack frame, must be alligned
+
+		mov	rdi,fmt
+		mov	rsi,msg
+		mov	rax,0		; or can be  xor  rax,rax
+	        call    printf		; Call C function
+
+		pop	rbp		; restore stack
+
+		mov	rax,0		; normal, no error, return value
+		ret			; return
