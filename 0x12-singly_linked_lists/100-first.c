@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 /**
- * first - 
+ * first - func
  * Apply the constructor attribute to first() so that it
  *   is executed before main()
  */
