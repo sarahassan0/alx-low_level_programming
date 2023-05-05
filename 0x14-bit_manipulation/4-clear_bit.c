@@ -1,6 +1,6 @@
 /*
  * 0x14. C - Bit manipulation
- * task 4
+ * task 5
  */
 
 
@@ -18,6 +18,6 @@ int clear_bit(unsigned long int *n, unsigned int index)
 	if (index >= 64) /* because an unsigned long integer is 64 bits in size */
 		return (-1);
 
-	*n ^= (1 << index);
+	*n &= ~(1 << index);
 	return (1);
 }
