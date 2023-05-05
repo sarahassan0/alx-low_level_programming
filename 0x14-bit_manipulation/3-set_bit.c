@@ -18,7 +18,7 @@ int set_bit(unsigned long int *n, unsigned int index)
 	if (index >= 64) /* because an unsigned long integer is 64 bits in size */
 		return (-1);
 
-	unsigned int mask = 1 << index;
+	int mask = 1 << index;
 
 	*n = *n | mask;  /* another solution => *n |= (1 << index) */
 	return (1);
