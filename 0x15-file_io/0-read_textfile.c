@@ -3,7 +3,6 @@
  * task 1
  */
 
-read_textfile
 #include "main.h"
 /**
  * read_textfile -reads a text file and prints it to the POSIX standard output.
@@ -13,7 +12,7 @@ read_textfile
  * or 0 If the function fails or filename is NULL or can not be opened or read,
  */
 
-ssize_t (const char *filename, size_t letters)
+ssize_t read_textfile(const char *filename, size_t letters)
 {
 	ssize_t fd_O, fd_R, fd_W;
 
@@ -22,11 +21,11 @@ ssize_t (const char *filename, size_t letters)
 
 	fd_O = open(filename, O_RDONLY);
 
-	char *buff =  calloc(letters, sizeof(char));
+	char *buff =  (char *)calloc(letters, sizeof(char));
 
 	if (buff == NULL)
 	{
-		close(fd_O)
+		close(fd_O);
 		return (0);
 	}
 
@@ -37,15 +36,15 @@ ssize_t (const char *filename, size_t letters)
 		close(fd_O);
 		return (0);
 	}
-	fd_W = write(STDOUT_FILENO, buff, R);
+	fd_W = write(STDOUT_FILENO, buff, fd_R);
 
 	if (fd_W == -1 || fd_W != fd_R)
 	{
-		free(buff)
-		close(fd);
+		free(buff);
+		close(fd_O);
 		return (0);
 	}
 	free(buff);
 	close(fd_O);
-	return (w);
+	return (fd_W);
 }
