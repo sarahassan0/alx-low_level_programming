@@ -15,13 +15,14 @@
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	ssize_t fd_O, fd_R, fd_W;
+	char *buff;
 
 	if (filename == NULL)
 		return (0);
 
 	fd_O = open(filename, O_RDONLY);
 
-	char *buff =  (char *)calloc(letters, sizeof(char));
+	buff = calloc(letters, sizeof(char));
 
 	if (buff == NULL)
 	{
