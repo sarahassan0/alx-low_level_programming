@@ -27,7 +27,7 @@ int main(int ac, char *av[])
 
 	if (fd_from_O == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from %s\n", av[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
 		exit(98);
 	}
 
@@ -46,7 +46,7 @@ int main(int ac, char *av[])
 
 		if (len_R == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't read from %s\n", av[1]);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
 			close_fun(fd_from_O);
 			close_fun(fd_to_O);
 			exit(98);
