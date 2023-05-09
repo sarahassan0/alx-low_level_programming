@@ -1,6 +1,6 @@
 /*
  * 0x14. C - 0x15. C - File I/O
- * task 2
+ * task 1
  */
 
 #include "main.h"
