@@ -35,7 +35,10 @@ int main(int ac, char *av[])
 		exit(98);
 	}
 
-	fd_to_O = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	fd_to_O = open(av[2], O_WRONLY | O_TRUNC);
+	
+	if (fd_to_O == -1)
+			fd_to_O = open(av[2], O_WRONLY | O_CREAT, 0664);
 
 	 len_W = write(fd_to_O, buff, len_R);
 	if (fd_to_O == -1 || len_W == -1 || len_W != len_R)
