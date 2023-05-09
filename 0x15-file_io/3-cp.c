@@ -19,7 +19,7 @@ void close_fun(int fd);
 
 int main(int ac, char *av[])
 {
-	int fd_from_O, fd_to_O, len_W, len_R = 1024;
+	int fd_from_O, fd_to_O, len_W, len_R;
 	char buff[1024];
 
 	check_ac(ac);
@@ -41,9 +41,8 @@ int main(int ac, char *av[])
 		close_fun(fd_from_O);
 		exit(99);
 	}
-	while (len_R > 0)
+	while ((len_R = read(fd_from_O, buff, 1024)))
 	{
-		len_R = read(fd_from_O, buff, 1024);
 		if (len_R == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't read from %s\n", av[1]);
