@@ -41,8 +41,9 @@ int main(int ac, char *av[])
 		close_fun(fd_from_O);
 		exit(99);
 	}
-	while ((len_R = read(fd_from_O, buff, 1024)))
-	{
+	do {
+		len_R = read(fd_from_O, buff, 1024);
+
 		if (len_R == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't read from %s\n", av[1]);
@@ -59,7 +60,7 @@ int main(int ac, char *av[])
 			exit(99);
 		}
 
-	}
+	} while (len_R > 0);
 	close_fun(fd_from_O);
 	close_fun(fd_to_O);
 	return (0);
