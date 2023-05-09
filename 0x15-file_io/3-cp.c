@@ -28,7 +28,6 @@ int main(int ac, char *av[])
 	if (fd_from_O == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from %s\n", av[1]);
-		close_fun(fd_from_O);
 		exit(98);
 	}
 
@@ -38,9 +37,8 @@ int main(int ac, char *av[])
 		fd_to_O = open(av[2], O_WRONLY | O_CREAT, 0664);
 	if (fd_to_O == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't  write to %s\n", av[2]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
 		close_fun(fd_from_O);
-		close_fun(fd_to_O);
 		exit(99);
 	}
 	while (len_R > 0)
@@ -48,7 +46,7 @@ int main(int ac, char *av[])
 		len_R = read(fd_from_O, buff, 1024);
 		if (len_R == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't  write to %s\n", av[2]);
+			dprintf(STDERR_FILENO, "Error: Can't read from %s\n", av[1]);
 			close_fun(fd_from_O);
 			close_fun(fd_to_O);
 			exit(98);
@@ -56,7 +54,7 @@ int main(int ac, char *av[])
 		len_W = write(fd_to_O, buff, len_R);
 		if (len_W == -1 || len_W != len_R)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't  write to %s\n", av[2]);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
 			close_fun(fd_from_O);
 			close_fun(fd_to_O);
 			exit(99);
@@ -65,7 +63,7 @@ int main(int ac, char *av[])
 	}
 	close_fun(fd_from_O);
 	close_fun(fd_to_O);
-	return (1);
+	return (0);
 }
 
 /**
