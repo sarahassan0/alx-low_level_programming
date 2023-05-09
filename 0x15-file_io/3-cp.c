@@ -31,17 +31,17 @@ int main(int ac, char *av[])
 	if (fd_from_O == -1 || len_R == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from %s\n", av[1]);
-		close_fun(fd_from_O);
+		close(fd_from_O);
 		exit(98);
 	}
 
-	fd_to_O = open(av[2], O_WRONLY | O_CREAT, 0664);
+	fd_to_O = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 
 	 len_W = write(fd_to_O, buff, len_R);
 	if (fd_to_O == -1 || len_W == -1 || len_W != len_R)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't  write to %s\n", av[2]);
-		close_fun(fd_to_O);
+		close(fd_to_O);
 		exit(99);
 	}
 
