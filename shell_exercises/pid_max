@@ -1,0 +1,7 @@
+# PID & PPID
+# task 1. /proc/sys/kernel/pid_max
+# A shell script that prints the maximum value a process ID can be.
+
+#!bin/bash
+pid_max=$(cat /proc/sys/kernel/pid_max)
+echo "The maximum process ID is: $pid_max"
