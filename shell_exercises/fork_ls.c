@@ -26,35 +26,35 @@ int main(void)
 	pid_t pid;
 	int i, status;
 
-        for(i = 0; i < 5; i++)
-        {
-                pid = fork();
-                if (pid == -1)
-                {
-                        perror("fork");
-                        exit(1);
-                }
-                else if (pid == 0)
-                {
-                        char *args[] = {"ls", "-l", "/tmp", NULL};
-                        if(execvp(args[0], args) == -1)
-                        {
-                                perror("execvp");
-                                exit(1);   
-                        }
-                        exit(0);
-                }
-                else
-                {
-                        if(waitpid(pid, &status, 0) == -1)
-                        {
-                                perror("waitpid");
-                                exit(1);   
-                        }
-                        printf("Child process with pid %d exited with status %d.\n", pid, status);
-                        exit(0);
-                        
-	        }
-        }
+	for (i = 0; i < 5; i++)
+	{
+		pid = fork();
+		if (pid == -1)
+		{
+			perror("fork");
+			exit(1);
+		}
+		else if (pid == 0)
+		{
+			char *args[] = {"ls", "-l", "/tmp", NULL};
+			if (execvp(args[0], args) == -1)
+			{
+				perror("execvp");
+				exit(1);
+			}
+			exit(0);
+		}
+		else
+		{
+			if (waitpid(pid, &status, 0) == -1)
+			{
+				perror("waitpid");
+				exit(1);
+			}
+			printf("Child process with pid %d exited with status %d.\n", pid, status);
+			exit(0);
+
+		}
+	}
 	return (0);
 }
