@@ -8,20 +8,20 @@
  */
 shash_table_t *shash_table_create(unsigned long int size)
 {
-    shash_table_t *shash_table;
+	shash_table_t *shash_table;
 
-    shash_table = malloc(sizeof(shash_table_t));
-    if (!shash_table)
-        return (NULL);
-    shash_table->array = malloc(sizeof(shash_node_t *) * size);
-    if (!shash_table->array)
-    {
-        free(shash_table);
-        return (NULL);
-    }
-    shash_table->size = size;
-    shash_table->shead = shash_table->stail = NULL;
-    return (shash_table);
+	shash_table = malloc(sizeof(shash_table_t));
+	if (!shash_table)
+		return (NULL);
+	shash_table->array = malloc(sizeof(shash_node_t *) * size);
+	if (!shash_table->array)
+	{
+		free(shash_table);
+		return (NULL);
+	}
+	shash_table->size = size;
+	shash_table->shead = shash_table->stail = NULL;
+	return (shash_table);
 }
 
 /**
@@ -33,31 +33,31 @@ shash_table_t *shash_table_create(unsigned long int size)
  */
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
-    shash_node_t *node, *cur_node;
-    int index;
+	shash_node_t *node, *cur_node;
+	int index;
 
-    if (ht == NULL || ht->array == NULL || ht->size == 0 ||
-        key == NULL || strlen(key) == 0 || value == NULL)
-        return (0);
-    index = key_index((const unsigned char *)key, ht->size);
-    cur_node = ht->array[index];
-    while (cur_node)
-    {
-        if (strcmp(cur_node->key, key) == 0)
-        {
-            free(cur_node->value);
-            cur_node->value = strdup(value);
-            return (1);
-        }
-        cur_node = cur_node->next;
-    }
-    node = create_node(key, value);
-    if (!node)
-        return (0);
-    node->next = ht->array[index];
-    ht->array[index] = node;
-    sorted_list(ht, node);
-    return (1);
+	if (ht == NULL || ht->array == NULL || ht->size == 0 ||
+			key == NULL || strlen(key) == 0 || value == NULL)
+		return (0);
+	index = key_index((const unsigned char *)key, ht->size);
+	cur_node = ht->array[index];
+	while (cur_node)
+	{
+		if (strcmp(cur_node->key, key) == 0)
+		{
+			free(cur_node->value);
+			cur_node->value = strdup(value);
+			return (1);
+		}
+		cur_node = cur_node->next;
+	}
+	node = create_node(key, value);
+	if (!node)
+		return (0);
+	node->next = ht->array[index];
+	ht->array[index] = node;
+	sorted_list(ht, node);
+	return (1);
 }
 
 /**
@@ -69,20 +69,20 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 
 char *shash_table_get(const shash_table_t *ht, const char *key)
 {
-    shash_node_t *cur_node;
-    int index;
+	shash_node_t *cur_node;
+	int index;
 
-    if (!ht || !key)
-        return (NULL);
-    index = key_index((const unsigned char *)key, ht->size);
-    cur_node = ht->array[index];
-    while (cur_node)
-    {
-        if (strcmp(cur_node->key, key) == 0)
-            return (cur_node->value);
-        cur_node = cur_node->next;
-    }
-    return (NULL);
+	if (!ht || !key)
+		return (NULL);
+	index = key_index((const unsigned char *)key, ht->size);
+	cur_node = ht->array[index];
+	while (cur_node)
+	{
+		if (strcmp(cur_node->key, key) == 0)
+			return (cur_node->value);
+		cur_node = cur_node->next;
+	}
+	return (NULL);
 }
 
 /**
@@ -92,26 +92,26 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 
 void shash_table_delete(shash_table_t *ht)
 {
-    unsigned long int i;
-    shash_node_t *cur, *temp;
+	unsigned long int i;
+	shash_node_t *cur, *temp;
 
-    if (!ht)
-        return;
-    for (i = 0; i < (ht->size); i++)
-    {
-        if (ht->array[i] != NULL)
-        {
-            cur = ht->array[i];
-            while (cur)
-            {
-                temp = cur->next;
-                free(cur->key);
-                free(cur->value);
-                free(cur);
-                cur = temp;
-            }
-        }
-    }
-    free(ht->array);
-    free(ht);
+	if (!ht)
+		return;
+	for (i = 0; i < (ht->size); i++)
+	{
+		if (ht->array[i] != NULL)
+		{
+			cur = ht->array[i];
+			while (cur)
+			{
+				temp = cur->next;
+				free(cur->key);
+				free(cur->value);
+				free(cur);
+				cur = temp;
+			}
+		}
+	}
+	free(ht->array);
+	free(ht);
 }
