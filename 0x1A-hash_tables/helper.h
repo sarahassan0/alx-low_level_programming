@@ -31,7 +31,7 @@ shash_node_t *create_node(const char *key, const char *value)
     return (node);
 }
 /**
- * sorted_list: create the sorted linked list of the hash table
+ * sorted_list - create the sorted linked list of the hash table
  * @ht: the hash table
  * @node: node to insert
  */
