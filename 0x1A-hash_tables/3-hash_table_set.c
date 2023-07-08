@@ -4,7 +4,7 @@
  * create_node - create node.
  * @key: key of the node.
  * @value: value of the node.
- * Return: pointer to the new node or null in failure.
+ * Return: pointer to the new node or NULL in failure.
  */
 
 hash_node_t *create_node(const char *key, const char *value)
