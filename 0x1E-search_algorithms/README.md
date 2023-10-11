@@ -1,6 +1,6 @@
 # Project: 0x1E. C - Search Algorithms
 
-## Resources
+## Resources.
 
 #### Read or watch:
 
