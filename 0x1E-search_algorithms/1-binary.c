@@ -47,7 +47,7 @@ void print(int *array, int low, int high)
 	printf("Searching in array: ");
 	for (i = low; i <= high; i++)
 	{
-		printf("%i ", array[i]);
+		printf("%i", array[i]);
 		if (i != high)
 			printf(", ");
 	}
